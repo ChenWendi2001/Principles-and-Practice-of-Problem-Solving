@@ -53,7 +53,7 @@ Next, according to the definition of \emph{Newton Interpolation}, calculate the 
 	return ans;
 \end{lstlisting}
 
-So, the overall time complexity is also $O(n^{2})$.
+So, the overall time complexity of \emph{Newton Interpolation} is also $O(n^{2})$.
 
 \section{Q3: Drawing and Analysis}
 
@@ -69,9 +69,10 @@ As the Figure \ref{fig:Figure_1} shows, no matter we use \emph{Lagrange Interpol
 This is predictable.
 It can be proved mathematically that the polynomials obtained by \emph{Lagrange interpolation} and \emph{Newton interpolation} are the same after simplification.
 
-Also, the original curve and the interpolation curve intersect at the sampled points, which is permitted by the base functions we use in these two methods.
+Also, the original curve and the interpolation curves intersect at the sampled points, which is permitted by the base functions we use in these two methods.
 However, the interpolation polynomial curves is more undulating than the original curve since we use polynomials to approximate.
-That's why when $x$ slightly deviates from the vicinity of the sampled points, a larger error will be caused(Figure \ref{fig:Figure_2}).
+Specifically, in this case, as $x$ is farther away from the central value (0), the function fluctuates more and the error is greater.
+Definitely, when $x$ deviates from the range of the sampled points, a larger error will be caused(Figure \ref{fig:Figure_2}).
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{./figures/Figure_2.png}
