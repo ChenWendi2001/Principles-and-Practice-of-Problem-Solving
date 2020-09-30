@@ -62,15 +62,21 @@ Since the interpolation range is not very large, and the existing points are eve
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{./figures/Figure_1.png}
-    \caption{original function and interpolating polynomials}
+    \caption{original function and interpolating polynomials from -5 to 5}
     \label{fig:Figure_1}
 \end{figure}
 As the Figure \ref{fig:Figure_1} shows, no matter we use \emph{Lagrange Interpolation} or \emph{Newton Interpolation}, we will get the \textbf{same} interpolating polynomials.
 This is predictable.
 It can be proved mathematically that the polynomials obtained by \emph{Lagrange interpolation} and \emph{Newton interpolation} are the same after simplification.
 
-Also, the original curve and the interpolation curve intersect at the interpolation point, which is permitted by the base functions we use in these two methods.
+Also, the original curve and the interpolation curve intersect at the interpolation points, which is permitted by the base functions we use in these two methods.
 However, the interpolation polynomial curve is more undulating than the original curve since we use polynomials to approximate.
-
+That's why when $x$ slightly deviates from the vicinity of the interpolation points, a larger error will be caused(Figure \ref{fig:Figure_2}).
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.6\textwidth]{./figures/Figure_2.png}
+    \caption{original function and interpolating polynomials from -10 to 10}
+    \label{fig:Figure_2}
+\end{figure}
 
 \end{document}

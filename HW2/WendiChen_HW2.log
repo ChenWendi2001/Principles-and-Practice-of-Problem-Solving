@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.9)  30 SEP 2020 15:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.9)  30 SEP 2020 21:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -147,20 +147,25 @@ File: ./figures/Figure_1.png Graphic file (type png)
 <use ./figures/Figure_1.png>
 Package pdftex.def Info: ./figures/Figure_1.png  used on input line 64.
 (pdftex.def)             Requested size: 207.0021pt x 152.02037pt.
- [2 <./figures/Figure_1.png>] (./WendiChen_HW2.aux) ) 
+<./figures/Figure_2.png, id=18, 462.528pt x 339.669pt>
+File: ./figures/Figure_2.png Graphic file (type png)
+<use ./figures/Figure_2.png>
+Package pdftex.def Info: ./figures/Figure_2.png  used on input line 77.
+(pdftex.def)             Requested size: 207.0021pt x 152.02037pt.
+ [2 <./figures/Figure_1.png> <./figures/Figure_2.png>] (./WendiChen_HW2.aux) ) 
 Here is how much of TeX's memory you used:
- 2991 strings out of 480608
- 41459 string characters out of 5907537
- 477136 words of memory out of 5000000
- 18885 multiletter control sequences out of 15000+600000
+ 2998 strings out of 480608
+ 41614 string characters out of 5907537
+ 477144 words of memory out of 5000000
+ 18891 multiletter control sequences out of 15000+600000
  537274 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,6n,62p,343b,1388s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on WendiChen_HW2.pdf (2 pages, 136592 bytes).
+Output written on WendiChen_HW2.pdf (2 pages, 159375 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

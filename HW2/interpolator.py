@@ -21,7 +21,7 @@ def init():
     y_data = list(map(float,input("Please enter Ys:").strip().split(',')))
     n = len(x_data)
     h = x_data[1]-x_data[0]
-    x = np.linspace(x_data[0],x_data[n-1],10000)
+    x = np.linspace(x_data[0]-5,x_data[n-1]+5,10000)
     newton_parameter=np.zeros((n,n))
     for j in range(n):
         newton_parameter[0][j]=y_data[j]
