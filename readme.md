@@ -1,6 +1,6 @@
 # Principles and Practice of Problem Solving(Fall 2020)
 
-# Contents
+## Contents
 
 - Homework and Project are included.
 
