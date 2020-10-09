@@ -1,9 +1,11 @@
 #include <iostream>
-#include <iomanip>
 #include <vector>
+#include <cmath>
+#include <iomanip>
+
 using namespace std;
 
-// Implement your Gaussian Elimination algorithm.
+// Implement your Jacobi Iteration algorithm.
 // You can add any standard library if needed.
 //
 
@@ -51,10 +53,10 @@ int main()
     vector<double> coin;
     double in;
 
-    //int t = 6;
+    //int t = 12;
     while (cin >> in)
     {
-        //cin >> in;
+
         coin.push_back(in);
     }
 
@@ -76,8 +78,47 @@ int main()
         B[i] = coin[index];
         index++;
     }
+    for (int q = 0; q < 10; q++)
+    {
+        for (int i = 0; i < n; i++)
+            x[i] = q;
 
-    // Solve the linear system and print the results.
+        // Solve the linear system and print the results.
+        int i, j, k;
+        double tmp;
+        double *x2 = new double[n];
+        for (k = 0; k < 1000000; k++)
+        {
+            for (i = 0; i < n; i++)
+            {
+                x2[i] = x[i];
+            }
+            for (i = 0; i < n; i++)
+            {
+                tmp = 0.0;
+                for (j = 0; j < n; j++)
+                {
+                    if (j == i)
+                        continue;
+                    tmp += A[i][j] * x2[j];
+                }
+                x[i] = (B[i] - tmp) / A[i][i];
+            }
+
+            for (i = 0, j = 0; i < n; i++)
+                if (fabs(x2[i] - x[i]) < 0.00001)
+                    j++;
+
+            if (j == n)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    cout << fixed << setprecision(3) << x[i] << " ";
+                }
+                return 0;
+            }
+        }
+    }
 
     for (int k = 0; k < n; k++)
     {
@@ -117,18 +158,6 @@ int main()
             B[i] = B[i] - temp * B[k];
         }
     }
-    //debug code
-    /*
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout << A[i][j] << '\t';
-        }
-        cout << B[i];
-        cout << endl;
-    }
-    */
 
     bool flag = false;
 
@@ -147,13 +176,15 @@ int main()
                 flag = true;
             }
         }
-        else if(!flag){
-            x[k] = B[k]/A[k][k];
+        else if (!flag)
+        {
+            x[k] = B[k] / A[k][k];
         }
     }
 
-    if(flag){
-        cout<<"No solution!";
+    if (flag)
+    {
+        cout << "No solution!";
         return 0;
     }
 
