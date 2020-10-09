@@ -44,8 +44,10 @@ int main()
     vector<double> coin;
     double in;
 
-    while (cin>>in)
+    int t = 12;
+    while (t--)
     {
+        cin>>in;
         coin.push_back(in);
     }
 
@@ -94,6 +96,23 @@ int main()
             }
             B[i] = B[i] - temp * B[k];
         }
+        for (int i = k - 1; i >= 0; i--)
+        {
+            double temp = A[i][k] / A[k][k];
+            for (int j = k; j < n; j++)
+            {
+                A[i][j] = A[i][j] - temp * A[k][j];
+            }
+            B[i] = B[i] - temp * B[k];
+        }
+    }
+    //debug code
+    for(int i = 0;i<n;i++){
+        for(int j = 0;i<n;j++){
+            cout<<A[i][j]<<' ';
+        }
+        cout<<B[i];
+        cout<<endl;
     }
 
     if (!A[n - 1][n - 1])
