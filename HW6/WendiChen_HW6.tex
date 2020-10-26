@@ -1,0 +1,72 @@
+%!TEX program = pdflatex
+\documentclass[a4paper]{article}
+\title{\textbf{Homework 6}}
+\author{Wendi Chen}
+\date{}
+\usepackage{listings}
+\usepackage{graphicx} 
+\usepackage{indentfirst} 
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\newtheorem{proof}{Proof}[section]
+\begin{document}
+\maketitle
+
+\section{Q2: Coin changing}
+\subsection{Problem a}
+In order to minimize the number of coins used,
+ we can simply choose the coin with the largest denomination each time.
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+\begin{algorithm}[h]
+    \caption{Pseudocode of the Greedy Algorithm to Make Change}
+    \begin{algorithmic}[1]
+        \Require
+        $n$: change for $n$ cents
+        \Ensure
+        $a_i$: the number of pennies, nickels, dimes and quarters respectively
+        \State set $c_0$=1 //penny
+        \State set $c_1$=5 //nickel
+        \State set $c_2$=10 //dime
+        \State set $c_3$=25 //quarter
+        \State set $i$=3
+        \While {$i >= 0$}
+        \State$a[i] = n/c[i]$
+        \State$n = n - a[i]\times c[i]$
+        \State$i = i - 1$
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+\begin{proof}
+    We define the original problem as $S(n)$. For an optimal solution $A=\{a_0,...,a_3\}$, we have $n = a_0\times c_0+a_1\times c_1+a_2\times c_2+a_3\times c_3$. 
+    After that, we can assert that $a_0<=4$,otherwise we can replace 5 pennies with 1 nickel, which uses fewer coins. 
+    In the same way, we can prove that $a_1<=1$, $a_2<=2$, and these two equal signs will not be true at the same time. 
+    So, $a_0\times c_0+a_1\times c_1+a_2\times c_2<25$.
+    That ensures when we use exact divisor to obtain $a_3$, the globally optimal solution must be obtained.
+    So the original problem is reduced to find the solution to $S(n^{'})$ using $a_2,a_1,a_0$, where $n^{'} = n - a_3\times c_3$.
+    We can use the same method to prove that greedy algorithm will generate the globally optimal solution $a_2,a_1,a_0$.
+    Therefore, the algorithm always yields an optimal solution.
+\end{proof}
+\subsection{Problem b}
+\begin{proof}
+    Similar to problem a, we define the original problem as $S(n)$. 
+    For an optimal solution $A=\{a_0,...,a_k\}$, we have $n = a_0\times c_0+...+a_k\times c_k, c_n = c^{n}$. 
+    According to problem a, we have $a_0,...,a_{k-1}<=c-1$. 
+    So, $a_0\times c_0+...+a_{k-1}\times c_{k-1}<=(c-1)\times \frac{1-c^{n}}{1-c}=c^{n}-1<c^{n}$.
+    That ensures when we use exact divisor to obtain $a_{k}$, the globally optimal solution must be obtained. 
+    So the original problem is reduced to find the solution to $S(n^{'})$ using $c_{k-1},...,c_0$, where $n^{'} = n - a_k\times c_k$.
+    We can use the same method to prove that greedy algorithm will generate the globally optimal solution $a_{k-1},...,a_0$.
+    Therefore, the greedy algorithm always yields an optimal solution.
+\end{proof}
+
+\subsection{Problem c}
+    Let the set of coin denominations $D = \{10,7,1\}$. 
+    When we use greedy algorithm to make change for 14 cents. 
+    The answer will be two 10s and four 1s, which uses 5 coins.
+    However, the globally optimal solution is two 7s, which uses only 2 coins.
+
+\end{document}
+
+
