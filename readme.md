@@ -46,6 +46,25 @@
 │   ├── WendiChen_HW7.tex
 │   ├── genetic-algorithm.cpp
 │   └── longest-common-subsequence.cpp
+├── HW8
+│   ├── NN
+│   │   └── NN.py
+│   ├── WendiChen_HW8.aux
+│   ├── WendiChen_HW8.log
+│   ├── WendiChen_HW8.pdf
+│   ├── WendiChen_HW8.synctex.gz
+│   └── WendiChen_HW8.tex
+├── HW9
+│   ├── README.md
+│   ├── README.pdf
+│   ├── src
+│   │   ├── main.cpp
+│   │   ├── mainwindow.cpp
+│   │   ├── mainwindow.h
+│   │   ├── mainwindow.ui
+│   │   ├── untitled.pro
+│   │   └── untitled.pro.user
+│   └── visualizer.exe
 ├── Reference
 │   └── Foundations of C++.pdf
 └── readme.md
