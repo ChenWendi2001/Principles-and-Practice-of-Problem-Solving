@@ -1,4 +1,4 @@
-# Principles and Practice of Problem Solving(Fall 2020)
+# CS241 Principles and Practice of Problem Solving(Fall 2020)
 
 ## Contents
 
