@@ -12,6 +12,13 @@
 #include <grid_dialog.h>
 #include <heat.h>
 #include <route.h>
+#include <QNetworkAccessManager>
+#include <QNetWorkReply>
+#include <QJsonDocument>
+#include <QString>
+#include <QJsonObject>
+#include <QEventLoop>
+#include <QJsonArray>
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +54,7 @@ private:
     void print_time_distribution();
     void print_fee_distribution();
     void print_total_revenue();
+    void prepare();
 public slots:
     void on_load_clicked();
     void on_plot_clicked();

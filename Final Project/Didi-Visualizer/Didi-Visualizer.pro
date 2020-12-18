@@ -6,6 +6,8 @@
 
 QT       += core gui
 QT       += charts
+QT       += network
+QT       += core
 
 RC_ICONS = icon.ico
 
@@ -36,7 +38,8 @@ SOURCES += \
     grid_dialog.cpp \
     mylabel.cpp \
     heat.cpp \
-    route.cpp
+    route.cpp \
+    networkthread.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +50,8 @@ HEADERS += \
     grid_dialog.h \
     mylabel.h \
     heat.h \
-    route.h
+    route.h \
+    networkthread.h
 
 FORMS += \
         mainwindow.ui \

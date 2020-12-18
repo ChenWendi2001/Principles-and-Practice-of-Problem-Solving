@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     rect[3]=500;
 
     update_map();
+    prepare();
 }
 
 MainWindow::~MainWindow()
@@ -177,10 +178,13 @@ void MainWindow::on_route_button_clicked()
         if(d.dep_time>=current && d.dep_time<=end)
             selected.append(d);
     }
-    route r;
-    r.data = &selected;
-    r.calculate();
-    r.exec();
+    route *r = new route;
+    r->data = &selected;
+    r->calculate();
+    r->open();
+    connect(r, &QDialog::finished, [r, this](int result) {
+        r->deleteLater();
+    });
 }
 
 void MainWindow::update_map()
@@ -708,8 +712,24 @@ void MainWindow::print_total_revenue()
         axisY->setTitleText("Ratio");
         axisX_another->setTitleText("Time");
         axisX_another->setLabelsAngle(-45);
+
         chart->setAxisX(axisX_another);
         chart->setAxisY(axisY,series);
+        series->attachAxis(axisX_another);
         chart->setAnimationOptions(QChart::SeriesAnimations);
     }
+}
+
+void MainWindow::prepare()
+{
+    QString url = QString("https://restapi.amap.com/v3/direction/driving?origin=104.129835,30.697831&destination=103.972389,30.674089&extensions=all&output=json&key=25824a502a0e2666ffe1b3744dbe8806");
+    qDebug()<<url;
+    auto netManager = new QNetworkAccessManager(this);
+    QEventLoop loop;
+    QObject::connect(netManager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
+    QNetworkRequest request;
+    request.setUrl(url);
+    QCoreApplication::processEvents();
+    auto reply = netManager->get(request);
+    loop.exec();
 }

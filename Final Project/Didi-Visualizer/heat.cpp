@@ -80,7 +80,6 @@ void heat::calculate()
     if(d == nullptr) return;
 
     int start = d->at(0).dep_time;
-
     int end = d->at(0).dep_time+gap;
 
     start +=int(gap*time_slider->value()/99);
