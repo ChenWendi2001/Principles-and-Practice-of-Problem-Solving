@@ -29,10 +29,13 @@ public:
     int r_index_i;
     int r_index_j;
 
+    bool id_flag;
+
     dataInfo();
     dataInfo(QString str,unsigned int d_time,unsigned int e_time,double o_lng,
              double o_lat,double d_lng,double d_lat,double f);
-    dataInfo(QString Str);
+//    dataInfo(QString Str);
+    dataInfo(QString Str,double start_x,double end_x,double start_y,double end_y);
     bool operator<(const dataInfo&other)const;
 };
 

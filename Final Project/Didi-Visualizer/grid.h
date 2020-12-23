@@ -4,14 +4,15 @@
 #include <QVector>
 #include <QString>
 #include <QStringList>
+#include <QDebug>
 
 class Grid
 {
 private:
     int grid_id;
+public:
     QVector<double> lat;
     QVector<double> lng;
-public:
     Grid();
     Grid(QString str);
 };

@@ -23,6 +23,7 @@ private:
 
 signals:
     void changed(int);
+    void readAll(int);
 public slots:
     void changeFlag();
 };

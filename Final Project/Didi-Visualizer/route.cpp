@@ -57,7 +57,7 @@ void route::paintEvent(QPaintEvent *event)
         p.drawEllipse(end,3,3);
     }
     p.setPen(Qt::transparent);
-    p.setBrush(QColor(0, 0, 200, 120));
+    p.setBrush(QColor(0, 0, 200));
     if(ifdraw){
         for(int i = 0;i<_ImgWidth;++i){
             for(int j = 0;j<_ImgHeight;++j){
@@ -71,10 +71,14 @@ void route::paintEvent(QPaintEvent *event)
         p.setPen(QPen(Qt::blue,5));
         for(int i = 0;i<R.size()-1;++i){
             //qDebug()<<R.at(i);
-            int start_x = (R.at(i).first - 103.908407474531)/(104.222044525468-103.908407474531)*500+20;
-            int end_x = (R.at(i+1).first - 103.908407474531)/(104.222044525468-103.908407474531)*500+20;
-            int start_y = 520-(R.at(i).second - 30.524081949676)/(30.7938780503239-30.524081949676)*500;
-            int end_y = 520-(R.at(i+1).second- 30.524081949676)/(30.7938780503239-30.524081949676)*500;;
+//            int start_x = (R.at(i).first - 103.908407474531)/(104.222044525468-103.908407474531)*500+20;
+//            int end_x = (R.at(i+1).first - 103.908407474531)/(104.222044525468-103.908407474531)*500+20;
+//            int start_y = 520-(R.at(i).second - 30.524081949676)/(30.7938780503239-30.524081949676)*500;
+//            int end_y = 520-(R.at(i+1).second- 30.524081949676)/(30.7938780503239-30.524081949676)*500;;
+            int start_x = (R.at(i).first - s_x)/(e_x-s_x)*500+20;
+            int end_x = (R.at(i+1).first - s_x)/(e_x-s_x)*500+20;
+            int start_y = 520-(R.at(i).second - s_y)/(e_y-s_y)*500;
+            int end_y = 520-(R.at(i+1).second- s_y)/(e_y-s_y)*500;;
             p.drawLine(start_x,start_y,end_x,end_y);
         }
 //        for(int i = 0;i<road.size()-1;++i){
@@ -218,10 +222,14 @@ void route::dijkstra(int start,int end)
         m_mutex.lock();
         show->setEnabled(false);
         AMap->setEnabled(false);
-        double start_x = (double(start.x())-20)/500.0*(104.222044525468-103.908407474531)+103.90840747453;
-        double start_y = (500-(double(start.y())-20))/500.0*(30.7938780503239-30.524081949676)+30.524081949676;
-        double end_x = (double(end.x())-20)/500.0*(104.222044525468-103.908407474531)+103.90840747453;
-        double end_y = (500-(double(end.y())-20))/500.0*(30.7938780503239-30.524081949676)+30.524081949676;
+//        double start_x = (double(start.x())-20)/500.0*(104.222044525468-103.908407474531)+103.90840747453;
+//        double start_y = (500-(double(start.y())-20))/500.0*(30.7938780503239-30.524081949676)+30.524081949676;
+//        double end_x = (double(end.x())-20)/500.0*(104.222044525468-103.908407474531)+103.90840747453;
+//        double end_y = (500-(double(end.y())-20))/500.0*(30.7938780503239-30.524081949676)+30.524081949676;
+        double start_x = (double(start.x())-20)/500.0*(e_x-s_x)+s_x;
+        double start_y = (500-(double(start.y())-20))/500.0*(e_y-s_y)+s_y;
+        double end_x = (double(end.x())-20)/500.0*(e_x-s_x)+s_x;
+        double end_y = (500-(double(end.y())-20))/500.0*(e_y-s_y)+s_y;
 
         QThread* m_workerThread = new QThread();
         networkThread* worker = new networkThread();

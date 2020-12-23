@@ -47,9 +47,10 @@ void MainWindow::on_load_clicked()
                       this, "choose a folder",
                        "/");
     auto FileThread = new fileThread;
-    ui->progressBar->setRange(0,2943000);
+//    ui->progressBar->setRange(0,2943000);
     connect(ui->cancle_button,SIGNAL(clicked(bool)),FileThread,SLOT(changeFlag()));
     connect(FileThread,SIGNAL(changed(int)),ui->progressBar,SLOT(setValue(int)));
+    connect(FileThread,SIGNAL(readAll(int)),ui->progressBar,SLOT(setMaximum(int)));
     connect(FileThread,SIGNAL(finished()),this,SLOT(reset()));
     FileThread->data = &data;
     FileThread->grid = &grid;
@@ -179,6 +180,11 @@ void MainWindow::on_route_button_clicked()
             selected.append(d);
     }
     route *r = new route;
+    r->s_x = grid.at(0).lat[0];
+    r->e_x = grid.at(99).lat[1];
+    r->s_y = grid.at(0).lng[2];
+    r->e_y = grid.at(99).lng[0];
+
     r->data = &selected;
     r->calculate();
     r->open();
@@ -256,6 +262,7 @@ void MainWindow::print_num_per_time()
         //qDebug()<<ui->start_time->dateTime().toMSecsSinceEpoch();
         //qDebug()<<num_per_inter;
         //qDebug()<<time;
+        chart->setTitle("Real-time Demand over Time");
         auto series = new QSplineSeries(this);
         series->setName("Real-time Demand");
         Lagrange l(time,num_per_inter);
@@ -287,6 +294,7 @@ void MainWindow::print_num_per_time()
         axisX->setTitleText("Time");
         chart->setAxisX(axisX,series);
         chart->setAxisY(axisY,series);
+        series->attachAxis(axisY);
         chart->setAnimationOptions(QChart::SeriesAnimations);
     }
 }
@@ -367,7 +375,7 @@ void MainWindow::print_in_out()
             series2->append(QPointF(time[i]*1000,inflow[i]));
             series3->append(QPointF(time[i]*1000,0));
         }
-
+        chart->setTitle("Inflow-Outflow over Time");
         auto series = new QAreaSeries(series2,series1);
         series->setName("outflow");
 
@@ -464,7 +472,7 @@ void MainWindow::print_in_out_ratio()
 
         //qDebug()<<inflow;
         //qDebug()<<outflow;
-
+        chart->setTitle("Inflow-Outflow Ratio over Time");
         auto series = new QStackedBarSeries(this);
         series->setName("Inflow-Outflow Ratio");
 
@@ -553,8 +561,8 @@ void MainWindow::print_time_distribution(){
 
 
         auto series = new QPieSeries(this);
-
-        series->setName("Real-time Demand");
+        chart->setTitle("Time Distribution");
+        series->setName("Time Cost");
         series->append("0-10 min",dist[0]);
         series->append("10-30 min",dist[1]);
         series->append("30-60 min",dist[2]);
@@ -611,10 +619,10 @@ void MainWindow::print_fee_distribution()
             }
         }
 
-
+        chart->setTitle("Fee Distribution");
         auto series = new QPieSeries(this);
 
-        series->setName("Real-time Demand");
+        series->setName("Fee");
         series->append("0-3",dist[0]);
         series->append("3-10",dist[1]);
         series->append("over 10",dist[2]);
@@ -679,7 +687,7 @@ void MainWindow::print_total_revenue()
             }
         }
 
-
+        chart->setTitle("Total Revenue over Time");
         auto series = new QBarSeries(this);
         series->setName("Total Revenue");
 

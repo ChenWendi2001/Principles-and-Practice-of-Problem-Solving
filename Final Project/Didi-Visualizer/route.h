@@ -43,6 +43,10 @@ public:
     QVector<std::pair<double,double>> R;
     QVector<QString> road;
     QString duration;
+    double s_x;
+    double e_x;
+    double s_y;
+    double e_y;
 private:
     static constexpr int _ImgWidth=100;
     static constexpr int _ImgHeight=100;
@@ -54,6 +58,8 @@ private:
     QImage _Img;
     QPoint start;
     QPoint end;
+
+
     bool ifdraw;
     bool ifdrawroute;
     int _countTable[_ImgWidth][_ImgHeight];
