@@ -6,7 +6,7 @@ All codes are written under Qt5.9.0 and Qt Creator is required.
 
 ### STEP 1
 
-Enter the ```src->Didi-Visualizer ``` directory, clicked ```Didi-Visualizer.pro```.
+Enter the ```src->Didi-Visualizer ``` directory, click ```Didi-Visualizer.pro```.
 
 ### STEP 2
 
